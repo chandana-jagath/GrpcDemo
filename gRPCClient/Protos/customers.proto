@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService";
+
+service Customer{
+	rpc GetCustomerInfo(CustomerLockupModel) returns (CustomeModel); 
+	rpc GetNewCustomer(NewCustomerRequest) returns (stream CustomeModel); 
+}
+
+message NewCustomerRequest
+{
+}
+
+message CustomerLockupModel
+{
+	int32 userId=1;
+}
+message CustomeModel
+{
+	string firstName=1;
+	string lastName=2;
+	int32 age=3;
+}
